@@ -1,5 +1,8 @@
+const Joi = require('joi');
 const express = require('express');
 const app = express();
+
+app.use(express.json());
 
 const genres = [
   { id: 1, name: "Action" },
@@ -24,6 +27,25 @@ app.get('/api/genres/:id', (req, res) => {
   if (!genre) return res.status(404).send('Could not find genre with given id');
 
   // return the genre
+  res.send(genre);
+})
+
+app.post('/api/genres', (req, res) => {
+  // validate the data
+  // if not valid return 400
+  const schema = Joi.object({
+    name: Joi.string().required().min(2).max(20)
+  }).required();
+
+  const {error} = schema.validate(req.body,);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  // if valid
+  // add it to list of genres
+  // return the genre
+  const genre = req.body;
+  genre.id = genres.length + 1;
+  genres.push(genre);
   res.send(genre);
 })
 
