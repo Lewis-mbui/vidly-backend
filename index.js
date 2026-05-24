@@ -6,7 +6,7 @@ const rentals = require('./routes/rentals');
 const express = require('express');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1/vidly')
+mongoose.connect('mongodb://127.0.0.1:27017/vidly?replicaSet=rs0')
   .then(() => console.log('connected to MongoDb...'))
   .catch(err => console.error('Could not connect to MongoDB'));
 

@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
       name: genre.name
     },
     numberInStock: req.body.numberInStock,
-    dailyRentalRate: req.body.dailyRentalRate
+    dailyRental: req.body.dailyRental
   })
   movie = await movie.save();
   res.send(movie);

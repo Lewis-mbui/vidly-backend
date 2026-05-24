@@ -1,6 +1,7 @@
 const {Rental, validate} = require('../models/rental');
 const {Customer} = require('../models/customer');
 const {Movie} = require('../models/movie');
+const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
@@ -31,16 +32,43 @@ router.post('/', async (req, res) => {
     movie: {
       _id: movie._id,
       title: movie.title,
-      dailyRentalRate: movie.dailyRentalRate
+      dailyRentalRate: movie.dailyRental
     }
   });
 
-  rental = await rental.save();
+  // Start a native MongoDB session
+  const session = await mongoose.startSession();
 
-  movie.numberInStock--;
-  movie.save();
+  try {
+    // Begin transaction
+    session.startTransaction();
 
-  res.send(rental);
+    // step A: save the rental
+    await rental.save();
+
+    // step B: update movie stock
+    await Movie.updateOne(
+      {_id: movie._id}, 
+      {$inc: {numberInStock: -1}},
+      {session}
+    );
+
+    // If both operations succeed, 
+    // commit the transaction permanently
+    await session.commitTransaction();
+
+    // send the response
+    res.send(rental);
+  } catch (ex) {
+    // If anything fails, abort transaction and undo
+    // changes automatically
+    await session.abortTransaction();
+    console.error('Transaction aborted due to error:', ex);
+    res.status(500).send('Something failed during the rental process.');
+  } finally {
+    // always close session when done
+    session.endSession();
+  }
 });
 
 router.get('/:id', async (req, res) => {
