@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
     session.startTransaction();
 
     // step A: save the rental
-    await rental.save();
+    await rental.save({session});
 
     // step B: update movie stock
     await Movie.updateOne(
