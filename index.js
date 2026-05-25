@@ -1,4 +1,4 @@
-const config = require('config');
+require('dotenv').config();
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
@@ -11,7 +11,7 @@ require('./routes/auth');
 const express = require('express');
 const app = express();
 
-if (!config.get('jwtPrivateKey')) {
+if (!process.env.JWT_PRIVATE_KEY) {
   console.error('FATAL ERROR: jwtPrivateKey is not defined');
   process.exit(1);
 }
