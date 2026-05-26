@@ -1,4 +1,5 @@
 const winston = require('winston');
+require('winston-mongodb');
 const error = require('./middleware/error');
 require('dotenv').config();
 const Joi = require('joi');
@@ -22,6 +23,10 @@ winston.add(new winston.transports.File({
   )
 })
 );
+
+winston.add(new winston.transports.MongoDB({
+  db: 'mongodb://127.0.0.1/vidly'
+}));
 
 if (!process.env.JWT_PRIVATE_KEY) {
   console.error('FATAL ERROR: jwtPrivateKey is not defined');
