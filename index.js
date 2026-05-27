@@ -1,28 +1,15 @@
 const winston = require('winston');
 require('winston-mongodb');
-const error = require('./middleware/error');
 require('dotenv').config();
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
-const genres = require('./routes/genres');
-const customers = require('./routes/customers');
-const movies = require('./routes/movies');
-const rentals = require('./routes/rentals');
-const users = require('./routes/users');
-const auth = require('./routes/auth');
+
 require('./routes/auth');
 const express = require('express');
 const app = express();
+require('./startup/routes')(app);
 
-// process.on('uncaughtException', (ex) => {
-//   winston.error(ex.message, ex);
-//   setTimeout(() => process.exit(1), 100);
-// })
-
-// process.on('unhandledRejection', (ex) => {
-//   throw ex;
-// })
 winston.exceptions.handle(new winston.transports.File({filename: 'uncaughtExceptions.log'}));
 winston.rejections.handle(new winston.transports.File({filename: 'unhandledRejections.log'}));
 
@@ -55,14 +42,7 @@ mongoose.connect('mongodb://127.0.0.1/vidly')
   .then(() => console.log('connected to MongoDb...'))
   .catch(err => console.error('Could not connect to MongoDB'));
 
-app.use(express.json());
-app.use('/api/genres', genres);
-app.use('/api/customers', customers);
-app.use('/api/movies', movies);
-app.use('/api/rentals', rentals);
-app.use('/api/users', users);
-app.use('/api/auth', auth);
-app.use(error);
+
 
 
 const port = process.env.PORT || 3000;
