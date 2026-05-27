@@ -1,22 +1,15 @@
-
 require('dotenv').config();
-const Joi = require('joi');
-Joi.objectId = require('joi-objectid')(Joi);
+const winston = require('winston');
 const express = require('express');
 const app = express();
 
 require('./startup/logging')();
 require('./startup/routes')(app);
 require('./startup/db')();
-
-
-
-if (!process.env.JWT_PRIVATE_KEY) {
-  console.error('FATAL ERROR: jwtPrivateKey is not defined');
-  process.exit(1);
-}
+require('./startup/config')();
+require('./startup/validation')();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`server running on port ${port}...`);
-})
+  winston.info(`server running on port ${port}...`);
+});

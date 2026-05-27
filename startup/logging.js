@@ -2,8 +2,25 @@ const winston = require('winston');
 require('winston-mongodb');
 
 module.exports = function() {
-  winston.exceptions.handle(new winston.transports.File({filename: 'uncaughtExceptions.log'}));
-  winston.rejections.handle(new winston.transports.File({filename: 'unhandledRejections.log'}));
+  winston.exceptions.handle(
+    new winston.transports.File({filename: 'uncaughtExceptions.log'}),
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple(),
+      )
+    })
+  );
+
+  winston.rejections.handle(
+    new winston.transports.File({filename: 'unhandledRejections.log'}),
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple()
+      )
+    })
+  );
 
   winston.add(new winston.transports.Console({
     format: winston.format.combine(
