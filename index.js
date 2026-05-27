@@ -15,6 +15,18 @@ require('./routes/auth');
 const express = require('express');
 const app = express();
 
+// process.on('uncaughtException', (ex) => {
+//   winston.error(ex.message, ex);
+//   setTimeout(() => process.exit(1), 100);
+// })
+
+// process.on('unhandledRejection', (ex) => {
+//   throw ex;
+// })
+winston.exceptions.handle(new winston.transports.File({filename: 'uncaughtExceptions.log'}));
+winston.rejections.handle(new winston.transports.File({filename: 'unhandledRejections.log'}));
+
+
 winston.add(new winston.transports.File({
   filename: 'logfile.log',
   format: winston.format.combine(
@@ -25,8 +37,14 @@ winston.add(new winston.transports.File({
 );
 
 winston.add(new winston.transports.MongoDB({
-  db: 'mongodb://127.0.0.1/vidly'
+  db: 'mongodb://127.0.0.1/vidly',
+  level: 'info'
 }));
+
+// throw new Error('Something failed during startup.');
+
+const p = Promise.reject(new Error('Something failed miserably!!'));
+p.then(() => console.log('Done'));
 
 if (!process.env.JWT_PRIVATE_KEY) {
   console.error('FATAL ERROR: jwtPrivateKey is not defined');
