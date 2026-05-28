@@ -1,3 +1,4 @@
+console.log(process.env.NODE_ENV);
 require('./startup/config')();
 const winston = require('winston');
 const express = require('express');
