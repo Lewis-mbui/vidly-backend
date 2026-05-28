@@ -132,3 +132,12 @@
 {"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:02:33.481Z"}
 {"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T12:19:45.794Z"}
 {"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:19:45.922Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T12:27:24.652Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:27:24.758Z"}
+{"_message":"Genre validation failed","errors":{"name":{"kind":"minlength","message":"Path `name` (`1234`, length 4) is shorter than the minimum allowed length (5).","name":"ValidatorError","path":"name","properties":{"length":4,"message":"Path `name` (`1234`, length 4) is shorter than the minimum allowed length (5).","minlength":5,"path":"name","type":"minlength","value":"1234"},"value":"1234"}},"level":"error","message":"Genre validation failed: name: Path `name` (`1234`, length 4) is shorter than the minimum allowed length (5). Genre validation failed: name: Path `name` (`1234`, length 4) is shorter than the minimum allowed length (5).","stack":"ValidationError: Genre validation failed: name: Path `name` (`1234`, length 4) is shorter than the minimum allowed length (5).\n    at model.validate (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\document.js:2864:36)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at model.$__save (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\model.js:393:7)\n    at model.save (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\model.js:667:5)\n    at D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\routes\\genres.js:19:3","timestamp":"2026-05-28T12:27:25.196Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T12:28:57.662Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:28:57.793Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T12:32:17.943Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:32:18.083Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T12:32:57.442Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T12:32:57.549Z"}
