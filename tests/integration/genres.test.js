@@ -1,6 +1,3 @@
-// SET UP ENVIRONMENT VARIABLES
-require('../../startup/config')();
-
 const request = require('supertest');
 let server;
 
