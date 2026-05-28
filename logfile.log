@@ -101,3 +101,24 @@
 {"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T09:46:03.153Z"}
 {"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T09:46:49.739Z"}
 {"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T09:46:49.836Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T10:04:55.423Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T10:04:55.546Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:44:08.724Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:44:08.829Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:45:49.915Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:45:50.075Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:46:05.429Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:46:05.541Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:48:46.832Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:48:46.965Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:49:12.689Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:49:12.798Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:50:07.071Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:50:07.161Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:50:31.347Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:50:31.450Z"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:53:12.906Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:53:12.996Z"}
+{"kind":"ObjectId","level":"error","message":"Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Genre\" Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Genre\"","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"Genre\"\n    at SchemaObjectId.cast (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\schema\\objectId.js:252:11)\n    at SchemaObjectId.SchemaType.applySetters (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\schemaType.js:1372:12)\n    at SchemaObjectId.SchemaType.castForQuery (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\schemaType.js:1798:17)\n    at cast (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\cast.js:386:32)\n    at model.Query.Query.cast (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\query.js:5212:12)\n    at model.Query.Query._castConditions (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\query.js:2409:10)\n    at model.Query._findOne (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\query.js:2756:8)\n    at model.Query.exec (D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\node_modules\\mongoose\\lib\\query.js:4797:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at D:\\Lewis\\WebDev\\Projects\\backend\\vidly\\routes\\genres.js:44:17","stringValue":"\"1\"","timestamp":"2026-05-28T11:53:13.215Z","value":"1","valueType":"string"}
+{"level":"info","message":"server running on port 3000...","timestamp":"2026-05-28T11:57:05.063Z"}
+{"level":"info","message":"connected to mongodb://localhost/vidly_tests...","timestamp":"2026-05-28T11:57:05.169Z"}
