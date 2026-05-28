@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('./startup/config')();
 const winston = require('winston');
 const express = require('express');
 const app = express();

@@ -1,16 +1,11 @@
+// SET UP ENVIRONMENT VARIABLES
+require('../../../startup/config')();
+
 const {User} = require('../../../models/user');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
 describe('user.generateAuthToken', () => {
-   beforeEach(() => {
-    process.env.JWT_PRIVATE_KEY = 'testPrivateKey';
-  });
-
-  afterEach(() => {
-    delete process.env.JWT_PRIVATE_KEY;
-  });
-
   it('should return a valid JWT', () => {
     const payload = {
       _id: new mongoose.Types.ObjectId().toHexString(), 
