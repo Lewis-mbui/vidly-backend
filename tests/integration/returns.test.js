@@ -60,7 +60,7 @@ describe('/api/returns', () => {
     await Movie.deleteMany({});
   });
 
-  it ('should reurn 401 if client is not logged in', async () => {
+  it ('should return 401 if client is not logged in', async () => {
     token = '';
 
     const res = await exec();

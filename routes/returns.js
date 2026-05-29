@@ -1,13 +1,13 @@
+const Joi = require('joi');
 const moment = require('moment');
+const validate = require('../middleware/validate');
 const auth = require('../middleware/auth');
 const {Rental} = require('../models/rental');
 const {Movie} = require('../models/movie');
 const express = require('express');
 const router = express.Router();
 
-router.post('/', auth, async (req, res, next) => {
-  if (!req.body.customerId) return res.status(400).send('customerId not provided');
-  if (!req.body.movieId) return res.status(400).send('movieId not provided');
+router.post('/', [auth, validate(validateReturn)], async (req, res, next) => {
 
   const rental = await Rental.findOne({
     'customer._id': req.body.customerId,
@@ -29,5 +29,14 @@ router.post('/', auth, async (req, res, next) => {
   
   res.send(rental);
 });
+
+function validateReturn(req) {
+  const schema = Joi.object({
+    customerId: Joi.objectId().required(),
+    movieId: Joi.objectId().required()
+  }).required();
+
+  return schema.validate(req);
+}
 
 module.exports = router;
