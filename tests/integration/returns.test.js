@@ -133,4 +133,14 @@ describe('/api/returns', () => {
 
     expect(movieInDb.numberInStock).toBe(movie.numberInStock + 1);
   });
+  
+  it('should return the rental if input is valid', async () => {
+    const res = await exec();
+
+    const rentalInDb = await Rental.findById(rental._id);
+
+    expect(Object.keys(res.body)).toEqual(
+      expect.arrayContaining(['dateOut', 'dateReturned', 'rentalFee', 'customer', 'movie'])
+    );
+  });
 });
