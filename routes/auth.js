@@ -1,4 +1,4 @@
-const Joi = require('Joi');
+const Joi = require('joi');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const {User} = require('../models/user');
