@@ -5,8 +5,8 @@ A RESTful API for managing a movie rental service built with **Node.js, Express,
 ## Table of contents
 
 - [Overview](#overview)
+- [Tech Stack](#tech-stack)
 - [Features](#features)
-- [Project Structure](#project-structure)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -14,6 +14,7 @@ A RESTful API for managing a movie rental service built with **Node.js, Express,
 - [Authentication & Authorization](#authentication--authorization)
 - [Testing](#testing)
 - [Lessons Learned](#lessons-learned)
+- [Future Improvements](#future-improvements)
 
 ## Overview
 
@@ -28,7 +29,37 @@ The project demonstrates common backend development practices including:
 - **MongoDB** data modelling with **Mongoose**
 - Transaction management for rental processing
 - Centralized logging and error handling
-- Automated testing with **Jest and **SuperTest\*\*
+- Automated testing with **Jest** and **SuperTest**
+
+## Tech Stack
+
+### Backend
+
+- Node.js
+- Express
+
+### Database
+
+- MongoDB
+- Mongoose
+
+### Authentication
+
+- JWT
+- bcrypt
+
+### Validation
+
+- Joi
+
+### Testing
+
+- Jest
+- Supertest
+
+### Logging & Monitoring
+
+- Winston
 
 ## Features
 
@@ -123,8 +154,9 @@ The application bootstraps through a series of startup modules:
 
 ### Clone the Repository
 
-```text
-git clone https://github.com/Lewis-mbui/vidly-backend.git cd vidly-backend
+```bash
+git clone https://github.com/Lewis-mbui/vidly-backend.git
+cd vidly-backend
 ```
 
 ### Install Dependencies
@@ -207,9 +239,9 @@ The application verifies that a JWT signing key is configured during startup. If
 
 ### Login/Authentication
 
-| Method   | Endpoint    | Description                         | Auth |
-| :------- | :---------- | :---------------------------------- | :--- |
-| **POST** | `/api/auth` | Authenticate a user and retur a JWT | No   |
+| Method   | Endpoint    | Description                          | Auth |
+| :------- | :---------- | :----------------------------------- | :--- |
+| **POST** | `/api/auth` | Authenticate a user and return a JWT | No   |
 
 ### Users
 
@@ -275,8 +307,8 @@ x-auth-token: <jwt>
 
 ### Example Request: Create a Movie
 
-```text
-POST /api/rentals
+```json
+POST /api/movies
 x-auth-token: <jwt>
 
 {
@@ -289,12 +321,12 @@ x-auth-token: <jwt>
 
 ### Example Request: Create a Rental
 
-```text
-POST /api/genres
+```json
+POST /api/rentals
 x-auth-token: <jwt>
 
 {
-  "customerId": "64f4f7b1d23f5a0012345678"
+  "customerId": "64f4f7b1d23f5a0012345678",
   "movieId": "64f4f7b1d23f5a0098765432"
 }
 ```
@@ -303,7 +335,7 @@ x-auth-token: <jwt>
 
 The API uses JSON Web Tokens (JWT) for authentication and role-based authorization for protected operations.
 
-### Authenticatin Flow
+### Authentication Flow
 
 1. A user registers through the /api/users endpoint.
 2. Passwords are hashed using bcrypt before being stored in MongoDB.
@@ -314,7 +346,7 @@ The API uses JSON Web Tokens (JWT) for authentication and role-based authorizati
 
 ### JWT Payload
 
-The token contains the authenticated user's identifeier and authorization information:
+The token contains the authenticated user's identifier and authorization information:
 
 ```json
 {
@@ -358,7 +390,7 @@ module.exports = function (req, res, next) {
 
 Certain operations require admin privileges.
 
-The authorizaion middware checks the `isAdmin` claim contained within the JWT
+The authorizaion middleware checks the `isAdmin` claim contained within the JWT
 
 ```js
 /* /middleware/admin.js */
@@ -449,3 +481,12 @@ This project provided hands-on experience with:
 - Automated testing with Jest and Supertest
 - Logging and error handling with Winston
 - Environment-based configuration management
+
+## Future Improvements
+
+- API documentation with Swagger/OpenAPI
+- Docker support
+- CI/CD pipeline integration
+- Rate limiting
+- Refresh token authentication
+- API versioning
